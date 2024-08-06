@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Читаем строки из файлов, отдаем обратно список строк
+ */
 public class InputFileReader {
     public List<String> readFile(File file) {
         ArrayList<String> values = new ArrayList<>();
