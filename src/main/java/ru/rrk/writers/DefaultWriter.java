@@ -5,8 +5,11 @@ import lombok.RequiredArgsConstructor;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+/**
+ * Экземпляры классы пишут данные в соответствующие файлы
+ */
 @RequiredArgsConstructor
-public class WriterImpl implements Writer<String> {
+public class DefaultWriter implements Writer<String> {
     private final BufferedWriter writer;
 
     @Override

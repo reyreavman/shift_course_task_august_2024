@@ -2,7 +2,10 @@ package ru.rrk.args;
 
 import com.beust.jcommander.JCommander;
 
-public class ArgsParser {
+/**
+ * Класс ловит случай, когда передан флаг для справки, вызывает справку и завершает программу
+ */
+public class ArgsHandler {
     public static void parse(Args args, JCommander commander, String[] appArgs) {
         commander.parse(appArgs);
         if (args.isHelpCalled()) {
