@@ -1,4 +1,4 @@
-package ru.rrk.writers;
+package ru.rrk.writers.writer;
 
 import lombok.RequiredArgsConstructor;
 

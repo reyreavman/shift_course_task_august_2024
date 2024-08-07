@@ -1,7 +1,7 @@
-package ru.rrk.writers.factory;
+package ru.rrk.writers;
 
-import ru.rrk.writers.Writer;
-import ru.rrk.writers.DefaultWriter;
+import ru.rrk.writers.writer.DefaultWriter;
+import ru.rrk.writers.writer.Writer;
 
 import java.io.BufferedWriter;
 
