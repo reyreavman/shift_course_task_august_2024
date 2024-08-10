@@ -1,7 +1,10 @@
 package ru.rrk.printers;
 
-public interface Printer {
-    void print(String string);
+import ru.rrk.classifiers.DataType;
 
-    void print(String string, String lineFeed);
+public interface Printer {
+    void printLn(String string);
+
+
+    void printStatWithType(DataType dataType, String stat, String lineFeed);
 }
