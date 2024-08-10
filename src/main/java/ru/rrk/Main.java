@@ -8,10 +8,9 @@ import ru.rrk.printers.DefaultPrinter;
 import ru.rrk.printers.Printer;
 import ru.rrk.readers.InputFileReader;
 import ru.rrk.stats.StatFactory;
-import ru.rrk.stats.StatForm;
-import ru.rrk.stats.StatsManager;
+import ru.rrk.stats.StatsRepository;
 import ru.rrk.writers.WriterFactory;
-import ru.rrk.writers.WritersManager;
+import ru.rrk.writers.WritersRepository;
 
 public class Main {
     public static final String INTEGER_PATTERN = "^-?\\d+$";
@@ -39,13 +38,13 @@ public class Main {
         DataTypeClassifier classifier = new DataTypeClassifier(INTEGER_PATTERN, FLOAT_PATTERN);
 
         WriterFactory writerFactory = new WriterFactory();
-        WritersManager writersManager = new WritersManager(writerFactory);
+        WritersRepository writersRepository = new WritersRepository(writerFactory);
 
         StatFactory statFactory = new StatFactory();
-        StatsManager statsManager = new StatsManager(statFactory);
+        StatsRepository statsstatsRepository = new StatsRepository(statFactory);
 
         Printer printer = new DefaultPrinter(System.out);
 
-        Manager manager = new Manager(args, reader, classifier, writersManager, statsManager, printer).start();
+        Manager manager = new Manager(args, reader, classifier, writersRepository, statsstatsRepository, printer).start();
     }
 }
