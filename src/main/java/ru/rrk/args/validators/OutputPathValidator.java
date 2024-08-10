@@ -19,6 +19,9 @@ public class OutputPathValidator implements IParameterValidator {
         if (!Files.isDirectory(path)) message = "Parameter %s contains a string that is not a directory.".formatted(name);
         else if (!Files.isWritable(path)) message = "Parameter %s contains a directory that is not writable.".formatted(name);
 
-        if (message != null) throw new ParameterException(message);
+        if (message != null) {
+            System.out.println(message);
+            System.exit(100);
+        }
     }
 }

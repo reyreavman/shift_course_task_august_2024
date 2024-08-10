@@ -14,10 +14,13 @@ public class InputFileValidator implements IParameterValidator {
         File file = new File(value);
         String message = null;
 
-        if (!file.exists()) message = "File with path %s does noe exists".formatted(file.getPath());
-        else if (!file.isFile()) message = "Path %s passed is not a file".formatted(file.getPath());
-        else if (!file.canRead()) message = "File %s is unreadable".formatted(file.getPath());
+        if (!file.exists()) message = "File with path %s does not exists.".formatted(file.getPath());
+        else if (!file.isFile()) message = "Path %s passed is not a file.".formatted(file.getPath());
+        else if (!file.canRead()) message = "File %s is unreadable.".formatted(file.getPath());
 
-        if (message != null) throw new ParameterException(message);
+        if (message != null) {
+            System.out.println(message);
+            System.exit(100);
+        }
     }
 }

@@ -14,7 +14,8 @@ public class TwoFormOfStatValidator implements IParametersValidator {
     @Override
     public void validate(Map<String, Object> map) throws ParameterException {
         if (map.get("-s") == TRUE && map.get("-f") == TRUE) {
-            throw new ParameterException("Two statistics flags passed, please choose only one flag");
+            System.out.println("Two statistics flags passed, please choose only one flag");
+            System.exit(100);
         }
     }
 }
