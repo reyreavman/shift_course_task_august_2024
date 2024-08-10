@@ -9,15 +9,15 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
 @Getter
 @RequiredArgsConstructor
 public class WritersManager {
     private final WriterFactory writerFactory;
-    private final ConcurrentHashMap<DataType, Writer<String>> writers = new ConcurrentHashMap<>();
+    private final HashMap<DataType, Writer<String>> writers = new HashMap<>();
 
-    public Writer<String> computeIfAbsent(DataType dataType, Path output, String prefix, boolean append) {
+    public Writer<String> getOrCreateWriter(DataType dataType, Path output, String prefix, boolean append) {
         if (!writers.containsKey(dataType)) putNewWriterInMap(dataType, output, prefix, append);
         return writers.get(dataType);
     }
