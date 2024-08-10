@@ -13,21 +13,33 @@ import java.util.HashMap;
 
 @Getter
 @RequiredArgsConstructor
-public class WritersManager {
+public class WritersRepository {
     private final WriterFactory writerFactory;
     private final HashMap<DataType, Writer<String>> writers = new HashMap<>();
 
+    /**
+     * Метод проверяет существование Writer, который обеспечивает соответствующий тип данных, если данного Writer в мапе нет,
+     * тогда создает его.
+     * @param dataType тип данных, который должен быть обеспечен Writer.
+     * @param output путь для выходных файлов.
+     * @param prefix префикс имен выходных файлов.
+     * @param append режим добавления в существующий файл.
+     * @return найденный или только что созданный Writer.
+     */
     public Writer<String> getOrCreateWriter(DataType dataType, Path output, String prefix, boolean append) {
         if (!writers.containsKey(dataType)) putNewWriterInMap(dataType, output, prefix, append);
         return writers.get(dataType);
     }
 
+    /**
+     * Вызов метода close для всех Writer.
+     */
     public void closeWriters() {
         writers.values().forEach(Writer::close);
     }
 
     /**
-     * Метод создает и кладет в мапу Writer с заданными данными
+     * Метод кладет в мапу Writer с заданными данными.
      *
      * @param type   тип данных, которые обеспечит выходной Writer.
      * @param output путь, заданный пользователем.
