@@ -1,12 +1,14 @@
 package ru.rrk.stats.strategy.fullForm;
 
 import lombok.Getter;
-import lombok.ToString;
 import ru.rrk.stats.strategy.StatStrategy;
 
+/**
+ * Класс, собирающий полную статистику для вещественных чисел.
+ */
 @Getter
 public class FullFormFloatStatStrategy implements StatStrategy {
-    private float count = 0;
+    private int count = 0;
     private float min = Float.MAX_VALUE;
     private float max = Float.MIN_VALUE;
     private float sum = 0;
@@ -44,10 +46,6 @@ public class FullFormFloatStatStrategy implements StatStrategy {
 
     @Override
     public String toString() {
-         return "Floats stats:\n" +
-                 "\tcount = %s\n".formatted(count) +
-                 "\tmin = %s, max = %s\n".formatted(min, max) +
-                 "\tsum = %s\n".formatted(sum) +
-                 "\tmean = %s\n".formatted(mean);
+         return "(count = %d, min = %f, max = %f, sum = %f, mean = %f)".formatted(count, min, max, sum, mean);
     }
 }

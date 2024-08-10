@@ -1,9 +1,11 @@
 package ru.rrk.stats.strategy.shortForm;
 
 import lombok.Getter;
-import lombok.ToString;
 import ru.rrk.stats.strategy.StatStrategy;
 
+/**
+ * Класс, собирающий краткую статистику.
+ */
 @Getter
 public class ShortFormStatStrategy implements StatStrategy {
     private int count = 0;
@@ -15,8 +17,6 @@ public class ShortFormStatStrategy implements StatStrategy {
 
     @Override
     public String toString() {
-        return "ShortFormStatStrategy{" +
-                "count=" + count +
-                '}';
+        return "(count = %d)".formatted(count);
     }
 }

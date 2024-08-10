@@ -3,6 +3,9 @@ package ru.rrk.stats.strategy.fullForm;
 import lombok.Getter;
 import ru.rrk.stats.strategy.StatStrategy;
 
+/**
+ * Класс, собирающий полную статистику для целых чисел.
+ */
 @Getter
 public class FullFormLongStatStrategy implements StatStrategy {
     private long count = 0;
@@ -43,10 +46,6 @@ public class FullFormLongStatStrategy implements StatStrategy {
 
     @Override
     public String toString() {
-        return "Integers stats:\n" +
-                "\tcount = %s\n".formatted(count) +
-                "\tmin = %s, max = %s\n".formatted(min, max) +
-                "\tsum = %s\n".formatted(sum) +
-                "\tmean = %s\n".formatted(mean);
+        return "(count = %d, min = %d, max = %d, sum = %d, mean = %d)".formatted(count, min, max, sum, mean);
     }
 }
