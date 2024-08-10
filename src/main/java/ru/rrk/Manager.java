@@ -7,8 +7,8 @@ import ru.rrk.classifiers.DataTypeClassifier;
 import ru.rrk.printers.Printer;
 import ru.rrk.readers.InputFileReader;
 import ru.rrk.stats.StatForm;
-import ru.rrk.stats.StatsManager;
-import ru.rrk.writers.WritersManager;
+import ru.rrk.stats.StatsRepository;
+import ru.rrk.writers.WritersRepository;
 
 import java.io.File;
 import java.util.List;
@@ -21,8 +21,8 @@ public class Manager {
     private final Args args;
     private final InputFileReader reader;
     private final DataTypeClassifier classifier;
-    private final WritersManager writersManager;
-    private final StatsManager statsManager;
+    private final WritersRepository writersRepository;
+    private final StatsRepository statsRepository;
     private final Printer printer;
 
     public Manager start() {
@@ -31,26 +31,39 @@ public class Manager {
         for (File file : files) {
             List<String> strings = reader.readFile(file);
             strings.forEach(string -> {
-                        DataType dataType = classifier.classify(string);
-                        if (!dataType.equals(DataType.VOID)) {
-                            writersManager.getOrCreateWriter(
-                                    dataType, args.getOutput(), args.getPrefix(), args.isAppendable()
-                            ).write(string.concat("\n"));
+                DataType dataType = classifier.classify(string);
+                if (!dataType.equals(DataType.VOID)) {
+                    writeDataWithType(dataType, string);
 
-                            if (mapToStatForm() != null) {
-                                statsManager.getOrCreateStats(
-                                        dataType, mapToStatForm()
-                                ).addData(string);
-                            }
-                        }
-                    });
+                    addDataToStatWithType(dataType, string);
+                }
+            });
         }
-        writersManager.closeWriters();
-        if (mapToStatForm() != null) {
-            statsManager.getAllStats()
-                    .forEach(stat -> printer.print(stat.toString()));
-        }
+        writersRepository.closeWriters();
+        printStat();
         return this;
+    }
+
+    private void writeDataWithType(DataType dataType, String string) {
+        writersRepository.getOrCreateWriter(
+                dataType, args.getOutput(), args.getPrefix(), args.isAppendable()
+        ).write(string.concat("\n"));
+    }
+
+    private void addDataToStatWithType(DataType dataType, String string) {
+        if (mapToStatForm() != null) {
+            statsRepository.getOrCreateStats(
+                    dataType, mapToStatForm()
+            ).addData(string);
+        }
+    }
+
+    private void printStat() {
+        if (mapToStatForm() != null) {
+            printer.printLn("\nStats:");
+            statsRepository.getStats()
+                    .forEach((type, stat) -> printer.printStatWithType(type, stat.toString(), "---------------------"));
+        }
     }
 
     private StatForm mapToStatForm() {
