@@ -1,11 +1,11 @@
 package ru.rrk.stats;
 
 import ru.rrk.classifiers.DataType;
+import ru.rrk.stats.strategy.StatStrategy;
 import ru.rrk.stats.strategy.fullForm.FullFormFloatStatStrategy;
 import ru.rrk.stats.strategy.fullForm.FullFormLongStatStrategy;
 import ru.rrk.stats.strategy.fullForm.FullFormStringStatStrategy;
 import ru.rrk.stats.strategy.shortForm.ShortFormStatStrategy;
-import ru.rrk.stats.strategy.StatStrategy;
 
 public class StatFactory {
     public StatStrategy create() {

@@ -15,14 +15,20 @@ public class DefaultPrinter implements Printer {
 
     }
 
+    /**
+     * Выводит в переданный PrintStream данные статистики.
+     * @param dataType тип статистики.
+     * @param stat строковое представление статистики.
+     * @param printSeparator разделитель
+     */
     @Override
-    public void printStatWithType(DataType dataType, String stat, String lineFeed) {
+    public void printStatWithType(DataType dataType, String stat, String printSeparator) {
         printStream.println(
                 dataType.toString()
                         .concat(": ")
                         .concat(stat)
                         .concat("\n")
-                        .concat(lineFeed)
+                        .concat(printSeparator)
 
         );
     }

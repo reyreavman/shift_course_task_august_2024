@@ -11,9 +11,8 @@ public class DataTypeClassifier {
     private final String floatPattern;
 
     /**
-     *
      * @param string строка для классификации.
-     * @return тип данной строки: STRING, FLOAT, INTEGER или VOID
+     * @return тип переданной строки: STRING, FLOAT, INTEGER или VOID
      */
     public DataType classify(String string) {
         if (string.isEmpty() || string.isBlank()) return DataType.VOID;

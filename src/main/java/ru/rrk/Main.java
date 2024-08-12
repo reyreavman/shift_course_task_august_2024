@@ -41,10 +41,10 @@ public class Main {
         WritersRepository writersRepository = new WritersRepository(writerFactory);
 
         StatFactory statFactory = new StatFactory();
-        StatsRepository statsstatsRepository = new StatsRepository(statFactory);
+        StatsRepository statsRepository = new StatsRepository(statFactory);
 
         Printer printer = new DefaultPrinter(System.out);
 
-        Manager manager = new Manager(args, reader, classifier, writersRepository, statsstatsRepository, printer).start();
+        Manager manager = new Manager(args, reader, classifier, writersRepository, statsRepository, printer).start();
     }
 }

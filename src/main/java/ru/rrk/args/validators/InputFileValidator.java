@@ -6,7 +6,7 @@ import com.beust.jcommander.ParameterException;
 import java.io.File;
 
 /**
- * Валидатор обрабатывает входные файлы.
+ * Валидатор обрабатывает путь входных файлов.
  */
 public class InputFileValidator implements IParameterValidator {
     @Override

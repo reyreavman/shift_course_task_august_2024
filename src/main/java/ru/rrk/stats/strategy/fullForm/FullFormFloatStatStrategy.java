@@ -46,6 +46,6 @@ public class FullFormFloatStatStrategy implements StatStrategy {
 
     @Override
     public String toString() {
-         return "(count = %d, min = %f, max = %f, sum = %f, mean = %f)".formatted(count, min, max, sum, mean);
+        return "(count = %d, min = %f, max = %f, sum = %f, mean = %f)".formatted(count, min, max, sum, mean);
     }
 }
